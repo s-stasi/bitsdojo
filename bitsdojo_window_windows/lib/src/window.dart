@@ -23,7 +23,8 @@ bool isValidHandle(int? handle, String operation) {
 
 Rect getScreenRectForWindow(int handle) {
   int monitor = MonitorFromWindow(handle, MONITOR_DEFAULTTONEAREST);
-  final monitorInfo = calloc<MONITORINFO>()..ref.cbSize = ffi.sizeOf<MONITORINFO>();
+  final monitorInfo = calloc<MONITORINFO>()
+    ..ref.cbSize = ffi.sizeOf<MONITORINFO>();
   final result = GetMonitorInfo(monitor, monitorInfo);
   if (result == TRUE) {
     return Rect.fromLTRB(
